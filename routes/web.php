@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListProdukController;
+use App\Http\Controllers\HomeController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,3 +34,4 @@ Route::get('/components/card', function () {
 
 
 route::get('/listproduk', [ListProdukController::class, 'show']);
+route::POST('/listproduk', [ListProdukController::class, 'simpan'])->name('produk.simpan');
