@@ -56,6 +56,7 @@
                 <th scope="col" class="px-6 py-3">Nama Produk</th>
                 <th scope="col" class="px-6 py-3">Deskripsi Produk</th>
                 <th scope="col" class="px-6 py-3">Harga Produk</th>
+                <th scope="col" class="px-6 py-3">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -72,6 +73,18 @@
                 </td>
                 <td class="px-6 py-4">
                     Rp.{{($harga[$index])}}
+                </td>
+                <td>
+                    <form action="{{ route('produk.delete', $id[$index]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                              onclick="return confirm('Are You Sure you want to delete {{ $item }}?')"
+                              class="cursor-pointer text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800">
+                               Delete
+                        </button>
+
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -137,6 +150,40 @@
 </div>
 {{-- END Modal --}}
 
+
+{{-- DELETE --}}
+{{-- <table>
+  <thead>
+    <tr>No</tr>
+    <tr>Nama Produk</tr>
+    <tr>Deskripsi Produk</tr>
+    <tr>Harga Produk</tr>
+    <tr>Action</tr>
+  </thead>
+</table>
+
+<tbody>
+  @foreach ($nama as $index => $item)
+    <tr>
+      <td>{{ $index + 1 }}</td>
+      <td>{{ $item }}</td>
+      <td>{{ $desc[$index] }}</td>
+      <td>{{ $harga[$index] }}</td>
+      <td>
+        <form action="{{ route('produk.delete', $id) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" onclick="return confirm('Are You Sure you want to delete {{ $item }}?')">Delete</button>
+        </form>
+      </td>
+    </tr>
+    
+  @endforeachy
+</tbody> --}}
+
+
+{{-- END DELETE --}}
+
 {{-- Footer --}}
 <footer class="bg-white dark:bg-gray-800 shadow-sm mt-10">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -151,7 +198,7 @@
             </ul>
         </div>
         <hr class="my-6 border-gray-200 dark:border-gray-700" />
-        <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© 2025 <a href="#" class="hover:underline">C & B</a>. All Rights Reserved.</span>
+        <span class="block text-sm text-gray-500 text-center dark:text-gray-400">©  <a href="#" class="hover:underline">3312411004</a>. ~~Hamdan Azmi~~.</span>
     </div>
 </footer>
 
